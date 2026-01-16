@@ -9,7 +9,7 @@
 ;; UI and base colors
 (setq my/color-accent  "#ff6000")
 (setq my/color-level-0 "#000000")
-(setq my/color-level-1 "#090809")
+(setq my/color-level-1 "#0f0f0f")
 (setq my/color-level-2 "#282A2E")
 (setq my/color-level-3 "#373B41")
 (setq my/color-level-4 "#e8dbb6")
