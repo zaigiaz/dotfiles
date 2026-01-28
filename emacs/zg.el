@@ -29,6 +29,14 @@
 (insert (format "* TODO Session %d - %s" num title)))
 
 
+;; basic thing to get todos for now
+(defun zg/tl()
+"search through current directory and get all TODOs"
+(interactive)
+(compile "grep -rn TODO --exclude-dir=.git")
+)
+
+
 
 ;; transparency settings
 (defun zg/transparency (x)
