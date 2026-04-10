@@ -9,7 +9,7 @@
 ;; UI and base colors
 (setq my/color-accent  "#ff6000")
 (setq my/color-level-0 "#000000")
-(setq my/color-level-1 "#0f0f0f")
+(setq my/color-level-1 "#1f1f1f")
 (setq my/color-level-2 "#282A2E")
 (setq my/color-level-3 "#373B41")
 (setq my/color-level-4 "#e8dbb6")
@@ -18,11 +18,13 @@
 ;; common colors
 (setq my/color-red     "#ff4d4d")
 (setq my/color-green   "#abb453")
-(setq my/color-blue    "#59CBE8")
-(setq my/color-white  "#e8dbb6")
+(setq my/color-blue    "#9ccbf1")
+(setq my/color-white   "#e8dbb6")
 (setq my/color-magenta "#db99cf")
-(setq my/color-gray    "#707880")
-(setq my/comment-face "#ff8433")
+(setq my/color-gray    "#a6abb1")
+
+;; can change to orange, or gray dpeending on what I want
+(setq my/comment-face "#707880")
 
 
 ;;;;; BASIC FACES
@@ -51,7 +53,7 @@
 ;;;;; FONT LOCK
 
 (custom-set-faces
- `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,my/color-magenta))))
+ `(font-lock-function-name-face ((t (:foreground ,my/color-magenta))))
  `(font-lock-variable-name-face ((t (:inherit (italic) :foreground ,my/color-white))))
  `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,my/color-red))))
  `(font-lock-comment-face       ((t (:foreground ,my/comment-face))))
