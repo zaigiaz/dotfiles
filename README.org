@@ -1,0 +1,10 @@
+* Overview
+
+dotfiles and configuration files for various computers that I own.
+
+I originally used i3 but tend to like more minimal stuff like ratpoison/stumpwm for window management
+on development pc's.
+
+preferred editor is Emacs
+preferred terminal is Alacritty
+preferred browser is Firefox
