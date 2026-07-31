@@ -1,0 +1,62 @@
+# Common settings
+
+   set winname class
+   defborder 1
+   defpadding 0 0 0 0
+   defbarpadding 0 0
+   set font Iosevka:size=14
+   set bargravity center
+   set inputwidth 400
+
+# window color (ratpoison windows)
+
+  set bgcolor #000000
+  set fgcolor #FFFFFF
+
+# active and inactive window color
+
+  set fwcolor white
+  set bwcolor gray30
+
+# set term to alacritty
+
+  alias term exec alacritty
+  bind C exec alacritty
+  bind c select alacritty
+
+# Common bindings
+
+  escape C-t
+
+  bind w windows
+  bind r restart
+  bind k kill
+
+  bind E exec emacs
+  bind e select Emacs
+  bind g select firefox
+  bind G exec firefox
+
+  bind z exec scrot -e 'mv $f ~/Pictures/Screenshots/'
+  bind d exec dmenu_run -fn Iosevka
+  bind y exec dock
+
+# Movement bindings
+
+  bind h focusleft
+  bind j focusdown
+  bind k focusup
+  bind l focusright
+
+  definekey top M-j next
+  definekey top M-k prev
+
+# workspaces
+
+  exec /usr/bin/rpws init 4 -k
+   bind C-1 exec rpws 1
+   bind C-2 exec rpws 2
+   bind C-2 exec rpws 3
+   bind C-2 exec rpws 4
+
+# scripts
