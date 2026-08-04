@@ -1,7 +1,7 @@
 ;; file for dropping into any emacs session and getting basic editor setup
 
 ;; Font
-(set-face-attribute 'default nil :font "Iosevka-13")
+(set-face-attribute 'default nil :font "Iosevka-14")
 
 ;; Package Repo
 (require 'package)
@@ -23,7 +23,7 @@
 
 (load-theme 'modus-vivendi-tritanopia :no-confirm)
 
-;; Theme
+;; other Theme I use
 (use-package alabaster-themes
   :config
   ;; (load-theme 'alabaster-themes-dark :no-confirm)
@@ -56,7 +56,8 @@
  (menu-bar-mode -1)
  (scroll-bar-mode -1)
  (tool-bar-mode -1)
- (tooltip-mode -1))
+ (tooltip-mode -1)
+ (display-time))
 
 ;;only y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -82,6 +83,10 @@
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
 (global-set-key (kbd "C-c e") 'ediff)
+
+(global-set-key (kbd "C-c p s") (lambda () 
+				  (interactive)
+				  (project-list-projects "~/Projects")))
 
 ;; save history for minibuffer for compilation mode and extras
 (savehist-mode 1)
@@ -159,6 +164,10 @@
   (("C-;" . mc/mark-next-like-this)
   ("C-c C-;" . 'mc/mark-all-like-this)))
 
+;; find-dired settings
+(require 'find-dired)
+(setq find-ls-option '("-exec ls -ldh {} +" . "-ldh"))
+
 ;;reload init file
 (defun reload-init-file ()
   (interactive)
@@ -184,9 +193,9 @@
   (setq golden-ratio-adjust 1.1))
 
 ;; repl for interacting with janet
-;; (add-to-list 'load-path
-;;              (expand-file-name "~/.emacs.d/ajrepl"))
+(add-to-list 'load-path
+             (expand-file-name "~/.emacs.d/ajrepl"))
 
-;; (require 'ajrepl)
-;; (add-hook 'janet-mode-hook
-;;           #'ajrepl-interaction-mode)
+(require 'ajrepl)
+(add-hook 'janet-mode-hook
+          #'ajrepl-interaction-mode)
