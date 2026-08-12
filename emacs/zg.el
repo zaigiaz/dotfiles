@@ -13,10 +13,6 @@
     (move-beginning-of-line 1)
     (forward-char column)))
 
-;; list of common directories
-;; TODO write completing read function for each list (uses dired, completing read, etc)
-(defvar dir-list '("~/Downloads/" "~/Projects/"))
-
 ;; create a temporary buffer
 (defun temp-buffer ()
   """Create a temporary buffer for text stuff"""
@@ -31,13 +27,18 @@
   (interactive)
   (shell-command "janet /home/zg/scripts/setup-project.janet" "*Messages*"))
 
-;; to be used with the 
-
 ;; use the (directory-files "~/Projects/" nil "^[^.]*$") for list of project dirs
 ;; use completing read for choice
-;; use dired to go to
-(defun project-list-projects(proj-path)
+;; use dired to go to chosen directory
+(defun project-list-projects (proj-path)
   "list all the directories in ~/Projects"
   (interactive)
   (let ((proj-list (directory-files proj-path nil "^[^.]*$")))
   (dired (concat proj-path (completing-read "Pick a Project: " proj-list)))))
+
+(defvar common-dir-list '("~/Downloads/" "~/dotfiles/" "~/Projects/" "~/third_party/" "~/Pictures/" "/" "~/" "~/notes/" "~/scripts/" "~/.emacs.d/"))
+
+(defun list-common-dirs ()
+  "list common directories in the system"
+  (interactive)
+  (dired (completing-read "Pick a dir: " common-dir-list)))
