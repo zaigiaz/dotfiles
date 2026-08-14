@@ -21,7 +21,7 @@
 
 (electric-pair-mode)
 
-(load-theme 'modus-vivendi-tritanopia :no-confirm)
+(load-theme 'alabaster-themes-dark :no-confirm)
 
 ;; other Theme I use
 (use-package alabaster-themes
@@ -56,9 +56,14 @@
  (menu-bar-mode -1)
  (scroll-bar-mode -1)
  (tool-bar-mode -1)
- (tooltip-mode -1)
- (display-time))
+ (tooltip-mode -1))
 
+;; modeline settings
+(display-time)
+(display-battery-mode)
+(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+
+ 
 ;;only y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-kill-emacs 'y-or-n-p)
@@ -82,11 +87,16 @@
 (global-set-key (kbd "M-c") 'capitalize-word)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-c t") '(lambda () (interactive) (term "/bin/bash")))
+
+
 (global-set-key (kbd "C-c e") 'ediff)
 
-(global-set-key (kbd "C-c p s") (lambda () 
+(global-set-key (kbd "C-c s d") 'list-common-dirs)
+(global-set-key (kbd "C-c s p") (lambda () 
 				  (interactive)
-				  (project-list-projects "~/Projects")))
+				  (project-list-projects "~/Projects/")))
 
 ;; save history for minibuffer for compilation mode and extras
 (savehist-mode 1)
@@ -104,12 +114,13 @@
   (setq ediff-split-window-function 'split-window-horizontally)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
+(use-package vertico 
+  :config
+  (vertico-mode))
+
 (use-package devdocs
   :bind
  ("C-c v" . devdocs-peruse))
-
-(use-package vertico
-  :config (vertico-mode t))
 
 (use-package marginalia
   :config (marginalia-mode t))
@@ -138,10 +149,9 @@
 
 ;;line settings and tweaks
 (setq next-line-add-newlines t)
-(global-display-line-numbers-mode 1)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 (setq-default truncate-lines t)
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 ;; completion style (fuzzy)
 (use-package orderless
