@@ -76,8 +76,8 @@
 (recentf-mode t)
 
 ;; General Keybindings 
-(global-set-key (kbd "C-M-n") (lambda () (interactive) (next-line 10)))
-(global-set-key (kbd "C-M-p") (lambda () (interactive) (previous-line 10)))
+(global-set-key (kbd "C-M-n") (lambda () (interactive) (next-line 13)))
+(global-set-key (kbd "C-M-p") (lambda () (interactive) (previous-line 13)))
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "C-c l") 'reload-init-file)
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -87,7 +87,7 @@
 (global-set-key (kbd "M-c") 'capitalize-word)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-c t") '(lambda () (interactive) (term "/bin/bash")))
 
 

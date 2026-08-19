@@ -7,6 +7,12 @@
    set font Iosevka:size=14
    set bargravity center
    set inputwidth 400
+   exec ratpoison -c banish
+
+# system startup
+
+   exec xset r rate 250 100
+   exec emacs &
 
 # window color (ratpoison windows)
 
@@ -18,11 +24,11 @@
   set fwcolor white
   set bwcolor gray30
 
-# set term to alacritty
+# set term to kitty
 
-  alias term exec alacritty
-  bind C exec alacritty
-  bind c select alacritty
+  alias term exec kitty
+  bind C exec kitty
+  bind c select kitty
 
 # Common bindings
 
@@ -53,10 +59,10 @@
 
 # workspaces
 
-  exec /usr/bin/rpws init 4 -k
+   exec /usr/bin/rpws init 4 -k
    bind C-1 exec rpws 1
    bind C-2 exec rpws 2
-   bind C-2 exec rpws 3
-   bind C-2 exec rpws 4
+   bind C-3 exec rpws 3
+   bind C-4 exec rpws 4
 
 # scripts
