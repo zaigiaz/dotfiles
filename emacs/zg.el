@@ -27,6 +27,9 @@
   (interactive)
   (shell-command "janet /home/zg/scripts/setup-project.janet" "*Messages*"))
 
+
+;; Picker Menus ----------------------------------------
+
 ;; use the (directory-files "~/Projects/" nil "^[^.]*$") for list of project dirs
 ;; use completing read for choice
 ;; use dired to go to chosen directory
@@ -36,9 +39,34 @@
   (let ((proj-list (directory-files proj-path nil "^[^.]*$")))
   (dired (concat proj-path (completing-read "Pick a Project: " proj-list)))))
 
-(defvar common-dir-list '("~/Downloads/" "~/dotfiles/" "~/Projects/" "~/third_party/" "~/Pictures/" "/" "~/" "~/notes/" "~/scripts/" "~/.emacs.d/"))
+(defvar common-dir-list '("~/Downloads/" "~/dotfiles/" "~/Projects/" "~/third_party/" "~/Pictures/" "/" "~/" "~/notes/" "~/scripts/" "~/.emacs.d/" "~/Books/"))
 
 (defun list-common-dirs ()
   "list common directories in the system"
   (interactive)
   (dired (completing-read "Pick a dir: " common-dir-list)))
+
+
+;; General Bookmarks ------------------------------
+
+(defun slurp (f)
+  (with-temp-buffer
+    (insert-file-contents f)
+    (buffer-substring-no-properties
+       (point-min)
+       (point-max))))
+
+(defun bookmark-link()
+  "paste in link and save to file .emacs.d/bookmark"
+  (interactive)
+  (let ((url (read-string "paste_link: ")))
+    (append-to-file (concat url "\n") 
+		    nil "~/.emacs.d/url-bookmarks")))
+
+(defun load-bookmarks()
+  (string-split (slurp "~/.emacs.d/url-bookmarks") "\n" t))
+
+(defun bookmark-open()
+  "pop-open completing read of list and open in firefox"
+  (interactive)
+  (browse-url-firefox (completing-read "goto url: " (load-bookmarks))))

@@ -1,4 +1,4 @@
-;; file for dropping into any emacs session and getting basic editor setup
+;; file for dropping into any emacs session and getting basic editor setup  -*- lexical-binding: t; -*-
 
 ;; Font
 (set-face-attribute 'default nil :font "Iosevka-14")
@@ -21,7 +21,7 @@
 
 (electric-pair-mode)
 
-(load-theme 'alabaster-themes-dark :no-confirm)
+(load-theme 'modus-vivendi-tritanopia :no-confirm)
 
 ;; other Theme I use
 (use-package alabaster-themes
@@ -63,7 +63,6 @@
 (display-battery-mode)
 (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
 
- 
 ;;only y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-kill-emacs 'y-or-n-p)
@@ -200,7 +199,7 @@
 (use-package golden-ratio
   :config
   (golden-ratio-mode t)
-  (setq golden-ratio-adjust 1.1))
+  (golden-ratio-adjust 1.15))
 
 ;; repl for interacting with janet
 (add-to-list 'load-path
