@@ -36,30 +36,14 @@
   (run-shell-command
    "scrot -s ~/Pictures/Screenshots/%Y%m%d-%H%M%S.png"))
 
-;;; Window selection helpers (TODO :: even needed?)
-(defun find-window-by-class-or-name (pattern)
-  (find-if
-   (lambda (window)
-     (or (search pattern (window-class window)
-                 :test #'char-equal)
-         (search pattern (window-name window)
-                 :test #'char-equal)))
-   (screen-windows (current-screen))))
-
-(defcommand select-window-by-pattern (pattern) ((:string "Window: "))
-  (let ((window (find-window-by-class-or-name pattern)))
-    (if window
-        (focus window)
-        (message "No matching window found: ~a" pattern))))
+(defcommand select-emacs () ()
+  (select-window-by-name "Emacs"))
 
 (defcommand select-emacs () ()
-  (select-window-by-pattern "Emacs"))
-
-(defcommand select-emacs () ()
-  (select-window-by-pattern "alacritty"))
+  (select-window-by-name "alacritty"))
 
 (defcommand select-firefox () ()
-  (select-window-by-pattern "Firefox"))
+  (selectf-window-by-name "Firefox"))
 
 ;;; Key bindings
 
@@ -68,7 +52,7 @@
 (define-key *root-map* (kbd "K") "delete-window")
 
 ;; Common Bindings
-(define-key *root-map* (kbd "R") "restart-soft")
+(define-key *root-map* (kbd "M-R") "restart-soft")
 
 (define-key *root-map* (kbd "C") "launch-terminal")
 (define-key *root-map* (kbd "c") "select-terminal")
@@ -106,6 +90,7 @@
 (setf *mode-line-background-color* "black"
       *mode-line-foreground-color* "white"
       *group-format* "%n"
+      *mode-line-timeout* 15
       *mode-line-border-width* 0)
 
 (setf *screen-mode-line-format*
