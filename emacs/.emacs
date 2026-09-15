@@ -1,7 +1,7 @@
 ;; file for dropping into any emacs session and getting basic editor setup  -*- lexical-binding: t; -*-
 
 ;; Font
-(set-face-attribute 'default nil :font "Iosevka-14")
+(set-face-attribute 'default nil :font "Iosevka-12")
 
 ;; Package Repo
 (require 'package)
@@ -22,7 +22,6 @@
 (electric-pair-mode)
 
 (load-theme 'modus-vivendi-tritanopia :no-confirm)
-
 ;; other Theme I use
 (use-package alabaster-themes
   :config
@@ -58,10 +57,10 @@
  (tool-bar-mode -1)
  (tooltip-mode -1))
 
-;; modeline settings
-(display-time)
+;; modeline settings (disabled for now)
 (display-battery-mode)
-(setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
+;; (display-time)
+;; (setq-default mode-line-format (delq 'mode-line-modes mode-line-format))
 
 ;;only y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -78,6 +77,7 @@
 (global-set-key (kbd "C-M-n") (lambda () (interactive) (next-line 13)))
 (global-set-key (kbd "C-M-p") (lambda () (interactive) (previous-line 13)))
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
+(global-set-key (kbd "C-x C-d") 'make-directory)
 (global-set-key (kbd "C-c l") 'reload-init-file)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'compile)
@@ -89,6 +89,9 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-c t") '(lambda () (interactive) (term "/bin/bash")))
 
+;; from my zg.el user lisp file, saves bookmarks in ~/.emacs.d/url-bookmarks
+(global-set-key (kbd "C-c b l") 'bookmark-link)
+(global-set-key (kbd "C-c b o") 'bookmark-open)
 
 (global-set-key (kbd "C-c e") 'ediff)
 
